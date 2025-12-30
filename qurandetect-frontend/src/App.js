@@ -39,15 +39,18 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-teal-100">
+    <div className="min-h-screen flex flex-col bg-teal-100 dark:bg-slate-800">
 
       {/* NAVBAR */}
-      <header className="fixed top-0 left-0 w-full flex justify-between bg-teal-500 px-6 py-4 text-teal-100 z-50">
-        <h1 className="text-xl font-bold">QuranDetect</h1>
-        <nav className="text-md flex gap-4 ">
+      <header className="fixed top-0 left-0 w-full flex justify-between bg-teal-500 px-6 py-4 text-teal-100 z-50 shadow-lg dark:bg-teal-700 ">
+        <h1 className="text-xl font-bold dark:text-black">QuranDetect</h1>
+        <nav className="text-md flex gap-4 dark:text-black">
           <a href="#">Home</a>
           <a href="#">Calendar</a>
           <a href="#">Contact</a>
+          <button onClick={() => {
+            document.documentElement.classList.toggle("dark");
+          }}>Toggle Theme </button>
         </nav>
       </header>
 
@@ -64,7 +67,7 @@ export default function Home() {
          </section>
 
         {/* DETECTION SECTION  */}
-        <section className="mx-auto max-w-md rounded bg-teal-400 p-6">
+        <section className="mx-auto max-w-md rounded bg-teal-400 p-6 dark:bg-teal-700">
           <h2 className="text-2xl font-bold mb-4 text-center">
             🎧 Try QuranDetect
           </h2>
@@ -79,7 +82,7 @@ export default function Home() {
             <button
             onClick={handleSubmit}
             disabled={loading}
-            className="w-full bg-teal-600 text-white font-semibold py-2 rounded hover:bg-teal-700 transition"
+            className="w-full bg-teal-600 text-white font-semibold py-2 rounded hover:bg-teal-700 transition dark:bg-teal-600 dark:text-black"
           >
             {loading ? "Processing..." : "Upload & Detect"}
           </button>
