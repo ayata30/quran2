@@ -39,7 +39,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-teal-100 dark:bg-slate-800">
+    <div className="min-h-screen flex flex-col bg-teal-100 dark:bg-teal-900">
 
       {/* NAVBAR */}
       <header className="fixed top-0 left-0 w-full flex justify-between bg-teal-500 px-6 py-4 text-teal-100 z-50 shadow-lg dark:bg-teal-700 ">
@@ -112,13 +112,13 @@ export default function Home() {
         <section>
           <h2 className="mb-4 text-xl font-bold text-center">Features</h2>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 hover:shadow">
-            <div className="rounded bg-teal-400 p-4 hover:bg-teal-400 hover:text-teal-100">
+            <div className="rounded bg-teal-400 p-4 hover:bg-teal-400 hover:text-teal-100 dark:bg-teal-700">
               Detect Audio
             </div>
-            <div className="rounded bg-teal-400 p-4 hover:bg-teal-400 hover:text-teal-100">
+            <div className="rounded bg-teal-400 p-4 hover:bg-teal-400 hover:text-teal-100 dark:bg-teal-700">
               Hifdh Game
             </div>
-            <div className="rounded bg-teal-400 p-4 hover:bg-teal-400 hover:text-teal-100">
+            <div className="rounded bg-teal-400 p-4 hover:bg-teal-400 hover:text-teal-100 dark:bg-teal-700">
               Radio
             </div>
           </div>
@@ -127,7 +127,7 @@ export default function Home() {
       </main>
 
       {/* FOOTER */}
-      <footer className="bg-teal-500 text-center text-sm text-teal-100 py-2">
+      <footer className="bg-teal-500 text-center text-sm text-teal-100 py-2 dark:bg-teal-700">
         © 2025 QuranDetect. All rights reserved.
       </footer>
 
