@@ -6,14 +6,6 @@ import json
 import os
 import uvicorn
 
-load_dotenv()
-print("OPENAI_API_KEY loaded:", os.getenv("OPENAI_API_KEY") is not None)
-
-
-app = FastAPI()
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-
-
 
 
 # Load Quran dataset

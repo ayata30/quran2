@@ -10,6 +10,19 @@ export default function Home() {
     setAudioFile(e.target.files[0]);
   };
 
+  const uploadAudio = async (audioFile) => {
+  const formData = new FormData();
+  formData.append("file", audioFile);
+
+  const res = await fetch("http://127.0.0.1:8000/transcribe", {
+    method: "POST",
+    body: formData
+  });
+
+  const data = await res.json();
+  console.log(data.text);
+};
+
   const handleSubmit = async () => {
     if (!audioFile) return alert("Please upload an audio file first!");
     setLoading(true);

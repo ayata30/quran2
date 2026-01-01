@@ -1,7 +1,5 @@
 # QuranDetect
 
-![QuranDetect Frontend Screenshot](assests\frontend.png)  
-
 **Project Type:** Full-Stack Web Application | Backend / Web API | Python, FastAPI, PostgreSQL | Frontend: React + Tailwind CSS
 
 ## Description
