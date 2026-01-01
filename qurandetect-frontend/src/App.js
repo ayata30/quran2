@@ -112,8 +112,10 @@ export default function Home() {
             <div className="mt-4 text-center">
               <h2 className="font-semibold">📖 Closest Match</h2>
               <p className="mt-2 text-black-100">
-                Surah {match.match.surah}:{match.match.ayah} — {match.match.text}
+                Surah {match.match.surah}:{match.match.ayah} — {match.match.arabic_text}
               </p>
+              <p>Translation: {match.match.english_text}</p>
+
               <p className="text-sm text-black-100">
                 Confidence: {match.confidence}%
               </p>

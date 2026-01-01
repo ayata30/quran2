@@ -1,38 +1,17 @@
 from dotenv import load_dotenv
 load_dotenv()
 from fastapi import FastAPI, UploadFile, File
-from fastapi.middleware.cors import CORSMiddleware
-from google import genai
-import os
+import tempfile
 
+from google.cloud import speech
+
+#QuranDetect is stateless and privacy-first.
 
 app = FastAPI()
 
-
-
-# The client gets the API key from the environment variable `GEMINI_API_KEY`.
-
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
-
-response = client.models.generate_content(
-    model="gemini-2.5-flash", contents="Explain how AI works in a few words"
-)
-print(response.text)
-# Allow your React frontend to communicate with the backend
-
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000"], 
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-
 # main.py
-quran_data = {}
-
+# " quran_data = {}
+"""
 with open("quran-simple-plain.txt", "r", encoding="utf-8") as f:
     for line in f:
         try:
@@ -42,35 +21,44 @@ with open("quran-simple-plain.txt", "r", encoding="utf-8") as f:
                 "ayah": int(ayah)
             }
         except ValueError:
-            continue  # skip bad lines
+            continue  # skip bad lines """
 
 @app.get("/")
 def home():
     return {"message": "QuranDetect Backend is running!"}
+
+@app.post("/transcribe")
+async def transcribe(file: UploadFile = File(...)):
+    client = speech.SpeechClient()
+
+    with tempfile.NamedTemporaryFile(delete=False) as tmp:
+        tmp.write(await file.read())
+        tmp_path = tmp.name
+
+    with open(tmp_path, "rb") as audio_file:
+        content = audio_file.read()
+
+    audio = speech.RecognitionAudio(content=content)
+
+    config = speech.RecognitionConfig(
+        encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
+        sample_rate_hertz=16000,
+        language_code="ar-SA",
+    )
+
+    response = client.recognize(config=config, audio=audio)
+
+    transcript = ""
+    for result in response.results:
+        transcript += result.alternatives[0].transcript + " "
+
+    return {"text": transcript}
 
 @app.post("/upload-audio")
 async def upload_audio(file: UploadFile = File(...)):
     with open(f"uploaded_{file.filename}", "wb") as f:
         f.write(await file.read())
     return {"status": "success", "filename": file.filename}
-
-
-# ✅ example route we'll later connect to the frontend recorder
-@app.post("/analyze-audio/")
-async def analyze_audio():
-    return {"result": "backend received the audio"}
-
-
-@app.post("/transcribe")
-async def transcribe(file: UploadFile = File(...)):
-    # Use Gemini API
-    content = await file.read()
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=[content.decode('utf-8')]  # adjust if you get bytes
-    )
-    return {"text": response.text}
-
 
 
 
@@ -88,6 +76,7 @@ async def detect(data: dict):
                 "surah": match["surah"],
                 "ayah": match["ayah"],
                 "arabic_text": text,
+                 "english_text": english_text
                 
             },
             "confidence": 100
