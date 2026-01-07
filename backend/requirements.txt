@@ -5,5 +5,5 @@ python-multipart
 
 fuzzywuzzy
 google-cloud-speech
-python-Levnshtein
+python-Levenshtein
 
