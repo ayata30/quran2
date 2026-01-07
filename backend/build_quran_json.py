@@ -61,3 +61,4 @@ with open("quran_full.json", "w", encoding="utf-8") as f:
 
 
 
+print("✅ quran_full.json created successfully")

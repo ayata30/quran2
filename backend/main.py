@@ -1,27 +1,18 @@
-from dotenv import load_dotenv
-load_dotenv()
 from fastapi import FastAPI, UploadFile, File
+from fastapi.responses import JSONResponse
+from fuzzywuzzy import process
+from google.cloud import speech
+import json
 import tempfile
 
-from google.cloud import speech
 
 #QuranDetect is stateless and privacy-first.
+client = speech.SpeechClient()
+app = FastAPI(title="QuranDetect Full")
 
-app = FastAPI()
+with open("quran_full.json", "r", encoding="utf-8") as f:
+    quran_data = json.load(f)
 
-# main.py
-# " quran_data = {}
-"""
-with open("quran-simple-plain.txt", "r", encoding="utf-8") as f:
-    for line in f:
-        try:
-            surah, ayah, arabic = line.strip().split("|")
-            quran_data[arabic] = {
-                "surah": int(surah),
-                "ayah": int(ayah)
-            }
-        except ValueError:
-            continue  # skip bad lines """
 
 @app.get("/")
 def home():
@@ -54,13 +45,39 @@ async def transcribe(file: UploadFile = File(...)):
 
     return {"text": transcript}
 
-@app.post("/upload-audio")
+@app.post("/upload")
 async def upload_audio(file: UploadFile = File(...)):
-    with open(f"uploaded_{file.filename}", "wb") as f:
-        f.write(await file.read())
-    return {"status": "success", "filename": file.filename}
+    #audio_content = await file.read()
+    contents = await file.read()  # read the bytes
+    audio = speech.RecognitionAudio(content=contents)
+    config = speech.RecognitionConfig(
+        encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
+        sample_rate_hertz=44000,
+        language_code="ar-SA",
+    )
+    response = client.recognize(config=config, audio=audio)
+    return {"transcript": response.results[0].alternatives[0].transcript}
+'''
+    client = speech.SpeechClient()
+    audio = speech.RecognitionAudio(content=contents)
+    config = speech.RecognitionConfig(
+        encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
+        language_code="ar-SA"
+    )
+    response = client.recognize(config=config, audio=audio)
+    if len(response.results) == 0:
+        return JSONResponse(content={"error": "No speech detected"}, status_code=400)
+    transcript = response.result[0].alternatives[0].transcript
+    confidence = response.results[0].alternatives[0].confidence
+    match = match_ayah(transcript)
+    if match:
+        match["speech_confidence"] = confidence
+        match["transcript"] = transcript
+        return match
+    else:
+        return JSONResponse(content={"error": "No matching verse found"}, status_code=404)
 
-
+'''
 
 @app.post("/detect")
 async def detect(data: dict):
@@ -109,3 +126,23 @@ def get_translation(surah, ayah):
     url = f"https://api.alquran.cloud/v1/ayah/{surah}:{ayah}/en.asad"
     r = requests.get(url).json()
     return r['data']['text'] if r.get('data') else ""
+
+
+
+def match_ayah(transcript):
+    choices = [item["arabic"] for item in quran_data]
+    best_match, score = process.extractOne(transcript, choices)
+    for item in quran_data:
+        if item["arabic"] == best_match:
+            return {
+                "surah": item["surah"],
+                "ayah": item["ayah"],
+                "arabic": item["arabic"],
+                "english": item["english"],
+                "confidence": score
+            }
+    return None
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=8000)

@@ -19,8 +19,8 @@ export default function Home() {
     body: formData
   });
 
-  const data = await res.json();
-  console.log(data.text);
+    const data = await res.json();
+  document.getElementById("result").innerText = JSON.stringify(data, null, 2);
 };
 
   const handleSubmit = async () => {
@@ -49,7 +49,10 @@ export default function Home() {
     const detectData = await detectRes.json();
     setMatch(detectData);
     setLoading(false);
+
   };
+
+
 
   return (
     <div className="min-h-screen flex flex-col bg-teal-100 dark:bg-teal-900">

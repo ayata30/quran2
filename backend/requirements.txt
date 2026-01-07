@@ -3,3 +3,7 @@ uvicorn
 pydantic
 python-multipart
 
+fuzzywuzzy
+google-cloud-speech
+python-Levnshtein
+
