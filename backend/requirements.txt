@@ -6,4 +6,6 @@ python-multipart
 fuzzywuzzy
 google-cloud-speech
 python-Levenshtein
+p
 
+gunicorn

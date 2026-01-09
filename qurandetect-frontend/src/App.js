@@ -143,9 +143,11 @@ export default function Home() {
         </section>
 
       </main>
+      
 
       {/* FOOTER */}
       <footer className="bg-teal-500 text-center text-sm text-teal-100 py-2 dark:bg-teal-700">
+       
         © 2025 QuranDetect. All rights reserved.
       </footer>
 

@@ -4,9 +4,11 @@ from fuzzywuzzy import process
 from google.cloud import speech
 import json
 import tempfile
+import os
+from google.cloud import speech
+from google.oauth2 import service_account
 
-
-#QuranDetect is stateless and privacy-first.
+#QuranDetect is stateless and privacy-first webapp.
 client = speech.SpeechClient()
 app = FastAPI(title="QuranDetect Full")
 
