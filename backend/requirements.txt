@@ -2,10 +2,8 @@ fastapi
 uvicorn
 pydantic
 python-multipart
-
 fuzzywuzzy
-google-cloud-speech
 python-Levenshtein
-p
-
-gunicorn
+httpx
+pyaudioop
+pydub
