@@ -2,8 +2,6 @@ import json
 
 #load arabic 
 
-
-
 quran = []
 quran_arabic = {}
 with open("quran-simple-plain.txt", encoding="utf-8") as f:
