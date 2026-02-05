@@ -5,21 +5,33 @@
 ## Description
 QuranDetect is a Shazam-inspired web application that identifies Quran Surahs from user audio recordings.  
 The frontend, built with React and Tailwind CSS, provides a responsive user interface for audio uploads and displays transcription results.  
-The backend handles audio processing, relational database storage, and API integration for transcription and Surah retrieval.
+
 
 ## Features
 - **Frontend:** React + Tailwind CSS for responsive, mobile-friendly UI that allows users to upload audio and view Surah results  
-- **Backend:** RESTful API built with Python and FastAPI  
-- **Database:** PostgreSQL for structured audio metadata storage  
+- **Backend:** RESTful API built with Python and FastAPI   
 - Audio processing and transcription using third-party APIs  
 - Modular architecture for maintainability and scalability  
 - Logging and environment-based configuration to support debugging and operational workflows  
 
+🚀 Features
+
+🎧 Upload Quran recitation audio
+
+🗣️ Automatic Arabic speech transcription
+
+📖 Fuzzy matching to identify Surah & Ayah
+
+🌍 English translation included
+
+⚡ FastAPI backend + React frontend
 ## Tech Stack
 **Frontend:** React, Tailwind CSS  
 **Backend:** Python, FastAPI  
-**Database:** PostgreSQL  
 **Other:** Git, REST APIs
+<img width="2555" height="1331" alt="image" src="https://github.com/user-attachments/assets/5b824a8a-d9fd-4cd2-8af4-89034112ac80" />
+🤍 Why I Built This
+This project combines my interest in software engineering and meaningful real-world applications. It’s an ongoing project focused on learning full-stack development, APIs, and deployment.
 
 ## Installation / Setup
 ```bash
@@ -39,3 +51,4 @@ uvicorn main:app --reload
 cd ../frontend
 npm install
 npm start
+<img width="2555" height="1331" alt="image" src="https://github.com/user-attachments/assets/fe097d38-5a0e-496e-ae4a-9cfb224c0328" />
