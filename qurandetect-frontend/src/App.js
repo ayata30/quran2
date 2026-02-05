@@ -3,8 +3,9 @@ import './App.css';
 import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from './pages/Home';
 import Radio from './pages/Radio';
-import Calendar from './pages/Calendar';
- import Contact from './pages/Contact';
+import Sayings from './pages/Sayings';
+import Contact from './pages/Contact';
+import HifdhGame from './pages/Hifdhgame';
  
   
 function App(){
@@ -17,8 +18,10 @@ function App(){
         <h1 className="text-xl font-bold dark:text-black">QuranDetect</h1>
         <nav className="text-md flex gap-4 dark:text-black">
           <Link to="/">Home</Link>
-          <Link to="/calendar">Calendar</Link>
           <Link to="/radio">Radio</Link>
+           <Link to="/sayings">Sayings</Link>
+          <Link to="/contact">Contact</Link>
+          <Link to="/hifdhgame">Hifdh Game</Link>
 
           <button onClick={() => {
             document.documentElement.classList.toggle("dark");
@@ -33,8 +36,9 @@ function App(){
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/radio" element={<Radio />} />
-          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/sayings" element={<Sayings />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/hifdhgame" element={<HifdhGame />} />
         </Routes>
         </main>
 

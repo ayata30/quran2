@@ -41,10 +41,9 @@ export default function Home() {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ text }),
+          body: JSON.stringify({ text}),
         }
       );
-
       const detectData = await detectRes.json();
       setMatch(detectData);
     } catch (err) {
@@ -65,6 +64,8 @@ export default function Home() {
         <p className="text-md mb-4">
           Upload audio and instantly find the Surah & Ayah
         </p>
+     
+
       </section>
 
       {/* DETECTION */}
@@ -76,7 +77,7 @@ export default function Home() {
         <form onSubmit={handleSubmit}>
           <input
             type="file"
-            accept="audio/*"
+            accept="audio/wav,audio/mpeg,audio/mp3,audio/mp4,audio/m4a,audio/ogg*"
             onChange={handleUpload}
             className="mb-4 w-full"
           />
@@ -89,6 +90,33 @@ export default function Home() {
             {loading ? "Processing..." : "Upload & Detect"}
           </button>
         </form>
+        {audioFile && (
+  <audio
+    controls
+    className="mt-4 w-full"
+    src={URL.createObjectURL(audioFile)}
+  />
+)}
+
+           <div className="mt-4 rounded-lg border border-teal-600 bg-teal-200 p-4 dark:border-teal-800 dark:bg-teal-800">
+  <h3 className="mb-2 text-sm font-semibold text-black-800">
+    Accepted Audio Formats
+  </h3>
+
+  <ul className="list-disc pl-5 text-sm text-black-600">
+    <ul>.wav (recommended)</ul>
+    <ul>.mp3</ul>
+    <ul>.m4a</ul>
+    <ul>.ogg</ul>
+  </ul>
+
+  <p className="mt-2 text-xs text-black-800">
+    Tip: For best results, record a single ayah or a couple with clear recitation and minimal background noise. <p/> 
+    <p> Max length: 60 seconds </p>
+    </p>
+</div>
+
+
 
         {transcription && (
           <div className="mt-4 text-center">
@@ -117,14 +145,14 @@ export default function Home() {
       <section className="mt-12">
         <h2 className="mb-4 text-xl font-bold text-center">Features</h2>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-          <div className="rounded bg-teal-400 p-4 dark:bg-teal-700 ">
-            ....
-          </div>
           <div className="rounded bg-teal-400 p-4 dark:bg-teal-700">
             Hifdh Game
           </div>
           <div className="rounded bg-teal-400 p-4 dark:bg-teal-700">
             Radio
+          </div>
+           <div className="rounded bg-teal-400 p-4 dark:bg-teal-700">
+            Sayings
           </div>
           </div>
           
