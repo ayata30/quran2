@@ -1,6 +1,6 @@
 # QuranDetect
 
-**Project Type:** Full-Stack Web Application | Backend / Web API | Python, FastAPI, PostgreSQL | Frontend: React + Tailwind CSS
+**Project Type:** Full-Stack Web Application | Backend / Web API | Python, FastAPI | Frontend: React + Tailwind CSS
 
 ## Description
 QuranDetect is a Shazam-inspired web application that identifies Quran Surahs from user audio recordings.  
