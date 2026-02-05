@@ -13,6 +13,7 @@ The frontend, built with React and Tailwind CSS, provides a responsive user inte
 - Audio processing and transcription using third-party APIs  
 - Modular architecture for maintainability and scalability  
 - Logging and environment-based configuration to support debugging and operational workflows  
+<img width="2533" height="1319" alt="Screenshot 2026-02-05 101714" src="https://github.com/user-attachments/assets/05ed19e2-7e1e-4329-81b2-b191336c9124" />
 
 🚀 Features
 
@@ -29,8 +30,6 @@ The frontend, built with React and Tailwind CSS, provides a responsive user inte
 **Frontend:** React, Tailwind CSS  
 **Backend:** Python, FastAPI  
 **Other:** Git, REST APIs
-<img width="2555" height="1331" alt="image" src="https://github.com/user-attachments/assets/5b824a8a-d9fd-4cd2-8af4-89034112ac80" />
-🤍 Why I Built This
 This project combines my interest in software engineering and meaningful real-world applications. It’s an ongoing project focused on learning full-stack development, APIs, and deployment.
 
 ## Installation / Setup
