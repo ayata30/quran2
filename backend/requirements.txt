@@ -7,3 +7,5 @@ python-Levenshtein
 httpx
 pydub
 rapidfuzz
+google-cloud-speech
+
