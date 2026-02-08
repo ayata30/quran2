@@ -3,9 +3,9 @@ import './App.css';
 import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from './pages/Home';
 import Radio from './pages/Radio';
-import Sayings from './pages/Sayings';
 import Contact from './pages/Contact';
 import HifdhGame from './pages/Hifdhgame';
+import PrivacyPolicy from './pages/PrivacyPolicy';
  
   
 function App(){
@@ -19,7 +19,7 @@ function App(){
         <nav className="text-md flex gap-4 dark:text-black">
           <Link to="/">Home</Link>
           <Link to="/radio">Radio</Link>
-           <Link to="/sayings">Sayings</Link>
+           <Link to="/privacypolicy">Privacy Policy</Link>
           <Link to="/contact">Contact</Link>
           <Link to="/hifdhgame">Hifdh Game</Link>
 
@@ -36,7 +36,7 @@ function App(){
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/radio" element={<Radio />} />
-          <Route path="/sayings" element={<Sayings />} />
+          <Route path="/privacypolicy" element={<PrivacyPolicy />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/hifdhgame" element={<HifdhGame />} />
         </Routes>
@@ -44,8 +44,9 @@ function App(){
 
 
       {/* FOOTER */}
-      <footer className="bg-teal-500 text-center text-sm text-teal-100 py-2 dark:bg-teal-700">
-        © 2025 QuranDetect. All rights reserved.
+      <footer className="bg-teal-500 text-center text-sm text-teal-100 py-2 dark:bg-teal-700 dark:text-black">
+        © 2025 QuranDetect. All rights reserved. Quran text provided by Tanzil.net
+  
       </footer>
 
     </div>

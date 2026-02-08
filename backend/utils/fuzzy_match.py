@@ -13,7 +13,7 @@ def normalize_arabic(text):
 
 def match_verse(transcript, quran_db, threshold=70):
     transcript_norm = normalize_arabic(transcript)
-    if len(transcript_norm) < 10:
+    if len(transcript_norm) < 5:
         return None
 # normlaize qurna text
     normalized_verses = [
@@ -23,7 +23,7 @@ def match_verse(transcript, quran_db, threshold=70):
     match_text, score, index = process.extractOne(
         transcript_norm,
         normalized_verses,
-        scorer=fuzz.ratio
+        scorer=fuzz.partial_ratio
 
     )
     if score < threshold:

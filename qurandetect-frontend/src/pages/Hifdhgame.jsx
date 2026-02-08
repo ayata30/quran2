@@ -3,7 +3,9 @@ export default function HifdhGame() {
     <div>
       <h2 className="text-2xl font-bold">Hifdh Game</h2>
       <p> Test / Memorization game logic</p>
-      <p>coming soon</p>
+      <p>coming soon...</p>
+      
+
      
 
     </div>

@@ -32,8 +32,8 @@ export default function Home() {
         }
       );
 
-      const transcribeData = await transcribeRes.json();
-      const text = transcribeData.text;
+      const { text } = await transcribeRes.json();
+    
       setTranscription(text);
 
       const detectRes = await fetch(
@@ -41,11 +41,17 @@ export default function Home() {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ text}),
+          body: JSON.stringify({text}),
         }
       );
       const detectData = await detectRes.json();
-      setMatch(detectData);
+      if (detectData.error) {
+  setMatch(null);
+} else {
+  setMatch(detectData);
+}
+
+ 
     } catch (err) {
       console.error(err);
       alert("Upload failed. Is the backend running?");
@@ -77,7 +83,7 @@ export default function Home() {
         <form onSubmit={handleSubmit}>
           <input
             type="file"
-            accept="audio/wav,audio/mpeg,audio/mp3,audio/mp4,audio/m4a,audio/ogg*"
+            accept="audio/wav,audio/mpeg,audio/mp3,audio/mp4,audio/m4a,audio/ogg"
             onChange={handleUpload}
             className="mb-4 w-full"
           />
@@ -85,7 +91,7 @@ export default function Home() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-teal-600 text-white font-semibold py-2 rounded"
+            className="w-full bg-teal-600 text-white font-semibold py-2 rounded dark:text-black"
           >
             {loading ? "Processing..." : "Upload & Detect"}
           </button>
@@ -111,49 +117,71 @@ export default function Home() {
   </ul>
 
   <p className="mt-2 text-xs text-black-800">
-    Tip: For best results, record a single ayah or a couple with clear recitation and minimal background noise. <p/> 
+       Tip: For best results, upload a single ayah or three with clear recitation and minimal background noise. <p/> 
     <p> Max length: 60 seconds </p>
+    <p className="mt-4 text-xs text-grey-400 text-center ">
+  Note: For longer recitations, QuranDetect may return the closest matching ayah rather than the full passage.
+</p>
     </p>
 </div>
 
+     
+{match?.surah && (
+  <div className="mt-6 max-w-2xl mx-auto bg-teal-200 rounded-xl shadow p-6 space-y-4 dark:border-teal-800 dark:bg-teal-800">
+    {/* Transcription */}
+    {transcription && (
+      <div className="text-center">
+        <h2 className="font-semibold text-lg">🗣️ Transcription</h2>
+        <p className="mt-2 text-lg break-words">
+          {transcription}
+        </p>
+      </div>
+    )}
+
+    {/* Closest Match */}
+    <div className="text-center">
+      <h2 className="font-semibold text-lg">📖 Closest Match</h2>
+
+      <p className="text-gray-700 dark:text-black">
+       <p> Surah {match.surah} | Ayah {match.ayah} </p>     
+</p>
+      <p className="text-xl leading-relaxed mt-3">
+        {match.arabic}
+      </p>
+
+      {match.english && (
+        <p className="italic text-purple-600 mt-2 dark:text-blue-700">
+          {match.english}
+        </p>
+      )}
+
+      <p className="text-sm text-gray-700 mt-2 dark:text-black">
+        Confidence: {match.confidence.toFixed(2)}%
+      </p>
+    </div>
+
+  </div>
+)}
 
 
-        {transcription && (
-          <div className="mt-4 text-center">
-            <h2 className="font-semibold">🗣️ Transcription</h2>
-            <p className="mt-2">{transcription}</p>
-          </div>
-        )}
 
-        {match?.match && (
-          <div className="mt-4 text-center">
-            <h2 className="font-semibold">📖 Closest Match</h2>
-            <p>
-              Surah {match.match.surah}:{match.match.ayah}
-            </p>
-            <p>{match.match.arabic_text}</p>
-            <p>{match.match.english_text}</p>
-            <p className="text-sm">
-              Confidence: {match.confidence}%
-            </p>
-          </div>
+          
 
-        )}
+       
         </section>
 
         {/* FEATURES */}
       <section className="mt-12">
         <h2 className="mb-4 text-xl font-bold text-center">Features</h2>
+        <h3 className="text-center mb-4 text-gray-500">Coming Soon</h3>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-          <div className="rounded bg-teal-400 p-4 dark:bg-teal-700">
+          <div className="rounded bg-teal-300 p-4 dark:bg-teal-700">
             Hifdh Game
           </div>
-          <div className="rounded bg-teal-400 p-4 dark:bg-teal-700">
+          <div className="rounded bg-teal-300 p-4 dark:bg-teal-700">
             Radio
           </div>
-           <div className="rounded bg-teal-400 p-4 dark:bg-teal-700">
-            Sayings
-          </div>
+           
           </div>
           
       </section>
