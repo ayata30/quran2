@@ -5,7 +5,10 @@ from google.cloud.speech_v2.types import cloud_speech
 PROJECT_ID = "qurandetect"
 
 # Instantiates a client
-client = SpeechClient()
+def get_client():
+    return SpeechClient()
+
+
 
 # Reads a file as bytes
 '''
@@ -14,6 +17,7 @@ with open("resources/audio.wav", "rb") as f:
     '''
 
 def transcribe_audio(audio_bytes: bytes) -> str:
+    client = get_client()
     config = cloud_speech.RecognitionConfig(
         auto_decoding_config=cloud_speech.AutoDetectDecodingConfig(),
     #encoding=cloud_speech.ExplicitDecodingConfig.AudioEncoding.LINEAR16,

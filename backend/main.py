@@ -10,7 +10,10 @@ import logging
 app = FastAPI()
 logging.basicConfig(level=logging.INFO)
 
-with open("quran_full.json", "r", encoding="utf-8") as f:
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+QURAN_PATH = os.path.join(BASE_DIR, "quran_full.json")
+
+with open(QURAN_PATH, "r", encoding="utf-8") as f:
     quran_db = json.load(f)
 
 app.add_middleware(

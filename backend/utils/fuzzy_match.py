@@ -30,7 +30,8 @@ def match_verse(transcript, quran_db, threshold=70):
         return None
     
     result = quran_db[index].copy()
-    result["confidence"] = score
+    result["confidence"] = int(score)
+    
     return result
 
   
