@@ -40,16 +40,20 @@ export default function Home() {
         "https://qurandetect-backend-975745335288.us-central1.run.app/detect",
         {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({text}),
+          body: formData,
         }
       );
+      {/* checking http status */}
+      if(!detectRes.ok){
+        throw new Error("Backend request failed");
+      }
       const detectData = await detectRes.json();
-      if (detectData.error) {
-  setMatch(null);
-} else {
-  setMatch(detectData);
-}
+     
+       if (detectData.error) {
+          setMatch(null);
+        } else {
+       setMatch(detectData);
+        }
 
  
     } catch (err) {
