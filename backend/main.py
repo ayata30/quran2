@@ -1,12 +1,14 @@
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from services.speech import transcribe_audio
 from utils.fuzzy_match import match_verse
 from pydantic import BaseModel
 import json
 import os
+import logging
 
 app = FastAPI()
+logging.basicConfig(level=logging.INFO)
 
 with open("quran_full.json", "r", encoding="utf-8") as f:
     quran_db = json.load(f)
@@ -35,21 +37,58 @@ async def transcribe(file: UploadFile = File(...)):
 
 class TextInput(BaseModel):
     text: str
-
 @app.post("/detect")
-async def detect(input: TextInput):
-    matched = match_verse(input.text, quran_db)
-    if matched:
-        return matched
+async def detect(file: UploadFile = File(...)):
+    logging.info(f"Received file: {file.filename}")
+    try:
+        audio_bytes = await file.read()
+        logging.info(f"Read {len(audio_bytes)} bytes from audio")
+        
+        # Transcribe
+        transcription = transcribe_audio(audio_bytes)
+        logging.info(f"Transcription: {transcription}")
+        
+        # Match verse
+        matched = match_verse(transcription, quran_db)
+        logging.info(f"Matched: {matched}")
 
-    return {"error": "No match"}
+        if matched:
+            return matched
+        return {"error": "No match found"}
+
+    except Exception as e:
+        logging.error(f"Error processing file {file.filename}: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=str(e))    
+'''
+@app.post("/detect")
+async def detect(file: UploadFile = File(...)):
+    logging.info(f"Received file: {file.filename}")
+    try:
+        audio_bytes = await file.read()
+        logging.info(f"Read {len(audio_bytes)} bytes from audio")
+        
+        # Transcribe
+        transcription = transcribe_audio(audio_bytes)
+        logging.info(f"Transcription: {transcription}")
+        
+        #input = TextInput(text=transcribe_audio(audio_bytes))
+        matched = match_verse(input.text, quran_db)
+        logging.info(f"Matched: {matched}")
+        
+        if matched:
+            return matched
+        return {"error": "No match"}
+    
+    except Exception as e:
+        logging.error(f"Error processing file {file.filename}: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+'''
 
 
-
-PORT = int(os.environ.get("PORT", 8000))
+PORT = int(os.environ.get("PORT", 8080))
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=PORT)
+    uvicorn.run(app, host="0.0.0.0", port=PORT)
 
     

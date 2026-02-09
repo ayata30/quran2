@@ -46,15 +46,15 @@ export default function Home() {
         }
       );
       {/* checking http status */}
+
       if(!detectRes.ok){
         throw new Error("Backend request failed");
       }
       const detectData = await detectRes.json();
-     
        if (detectData.error) {
           setMatch(null);
         } else {
-       setMatch(detectData);
+           setMatch(detectData);
         }
 
  
