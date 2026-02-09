@@ -25,7 +25,7 @@ export default function Home() {
       formData.append("file", audioFile);
 
       const transcribeRes = await fetch(
-        "http://127.0.0.1:8000/transcribe",
+        "https://qurandetect-backend-975745335288.us-central1.run.app/transcribe",
         {
           method: "POST",
           body: formData,
@@ -37,7 +37,7 @@ export default function Home() {
       setTranscription(text);
 
       const detectRes = await fetch(
-        "http://127.0.0.1:8000/detect",
+        "https://qurandetect-backend-975745335288.us-central1.run.app/detect",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
