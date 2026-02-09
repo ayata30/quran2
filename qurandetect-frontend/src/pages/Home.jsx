@@ -21,26 +21,28 @@ export default function Home() {
     setLoading(true);
 
     try {
-      const formData = new FormData();
-      formData.append("file", audioFile);
+      const formData1 = new FormData();
+      formData1.append("file", audioFile);
 
       const transcribeRes = await fetch(
         "https://qurandetect-backend-975745335288.us-central1.run.app/transcribe",
         {
           method: "POST",
-          body: formData,
+          body: formData1,
         }
       );
 
       const { text } = await transcribeRes.json();
-    
       setTranscription(text);
+
+      const formData2 = new FormData();
+      formData2.append("file", audioFile);
 
       const detectRes = await fetch(
         "https://qurandetect-backend-975745335288.us-central1.run.app/detect",
         {
           method: "POST",
-          body: formData,
+          body: formData2,
         }
       );
       {/* checking http status */}
