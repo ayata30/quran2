@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+fastapi
+pydantic
+python-multipart
+fuzzywuzzy
+python-Levenshtein
+httpx
+pydub
+rapidfuzz
+google-cloud-speech
+requests
