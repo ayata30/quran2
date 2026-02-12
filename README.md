@@ -1,21 +1,13 @@
 # QuranDetect
 
-**Project Type:** Full-Stack Web Application | Backend / Web API | Python, FastAPI | Frontend: React + Tailwind CSS
+**Project Type:** Full-Stack Web Application | Backend: Python, FastAPI | Frontend: React + Tailwind CSS  | Tools: Google Speech to Text API, Docker
 
 ## Description
-QuranDetect is a Shazam-inspired web application that identifies Quran Surahs from user audio recordings.  
-The frontend, built with React and Tailwind CSS, provides a responsive user interface for audio uploads and displays transcription results.  
+QuranDetect is a Shazam-inspired web application that identifies Quran Ayahs from user audio recordings. The user is able to upload their audio and immeditaely get a text repsonse back of the corrcelty located Ayah.  
+ 
+<img width="2524" height="1343" alt="Screenshot 2026-02-11 154949" src="https://github.com/user-attachments/assets/020e7af8-d78a-49dc-8a38-83aee506ba3c" />
 
-
-## Features
-- **Frontend:** React + Tailwind CSS for responsive, mobile-friendly UI that allows users to upload audio and view Surah results  
-- **Backend:** RESTful API built with Python and FastAPI   
-- Audio processing and transcription using third-party APIs  
-- Modular architecture for maintainability and scalability  
-- Logging and environment-based configuration to support debugging and operational workflows  
-<img width="2533" height="1319" alt="Screenshot 2026-02-05 101714" src="https://github.com/user-attachments/assets/05ed19e2-7e1e-4329-81b2-b191336c9124" />
-
-🚀 Features
+## 🚀 Features
 
 🎧 Upload Quran recitation audio
 
@@ -25,11 +17,6 @@ The frontend, built with React and Tailwind CSS, provides a responsive user inte
 
 🌍 English translation included
 
-⚡ FastAPI backend + React frontend
-## Tech Stack
-**Frontend:** React, Tailwind CSS  
-**Backend:** Python, FastAPI  
-**Other:** Git, REST APIs
 This project combines my interest in software engineering and meaningful real-world applications. It’s an ongoing project focused on learning full-stack development, APIs, and deployment.
 
 ## Installation / Setup
