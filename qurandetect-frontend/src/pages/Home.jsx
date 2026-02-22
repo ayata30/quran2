@@ -53,27 +53,21 @@ export default function Home() {
           body: formData2,
         }
       );
+
       {/* checking http status */}
 
-      
+
       if(!detectRes.ok){
         throw new Error("Backend request failed");
       }
-      const detectData = await detectRes.json();
-       if (detectData.error) {
-          setMatch(null);
-        } else {
-           setMatch(detectData);
-        }
 
- 
     } catch (err) {
       console.error(err);
       alert("Upload failed. Is the backend running?");
     } finally {
       setLoading(false);
     }
-  };
+  }
 
   return (
     <>
