@@ -19,11 +19,7 @@ with open(QURAN_PATH, "r", encoding="utf-8") as f:
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-<<<<<<< HEAD
-   allow_credentials=True,
-=======
     allow_credentials=True,
->>>>>>> c16d17795ab63ee09e946ddd8b6ac98a95a1fd18
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -41,12 +37,6 @@ async def transcribe(file: UploadFile = File(...)):
     return {"text": transcript}
 
 
-<<<<<<< HEAD
-
-class TextInput(BaseModel):
-    text: str
-=======
->>>>>>> c16d17795ab63ee09e946ddd8b6ac98a95a1fd18
 
 class TextInput(BaseModel):
     text: str
@@ -71,11 +61,6 @@ async def detect(file: UploadFile = File(...)):
 
     except Exception as e:
         logging.error(f"Error processing file {file.filename}: {e}", exc_info=True)
-<<<<<<< HEAD
-        raise HTTPException(status_code=500, detail=str(e))   
-
-        
-=======
         raise HTTPException(status_code=500, detail=str(e))    
 '''
 @app.post("/detect")
@@ -108,4 +93,3 @@ PORT = int(os.environ.get("PORT", 8080))
 
 
     
->>>>>>> c16d17795ab63ee09e946ddd8b6ac98a95a1fd18

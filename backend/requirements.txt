@@ -1,11 +1,12 @@
 fastapi
-uvicorn
+uvicorn[standard]
+fastapi
 pydantic
 python-multipart
 fuzzywuzzy
-google-cloud-speech
 python-Levenshtein
 httpx
+<<<<<<< HEAD
 
 # Using uvicorn[standard] for performance benefits (uvloop, httptools)
 fastapi==0.111.0
@@ -31,6 +32,8 @@ python-multipart
 fuzzywuzzy
 
 httpx
+=======
+>>>>>>> c16d17795ab63ee09e946ddd8b6ac98a95a1fd18
 pydub
 rapidfuzz
 google-cloud-speech
