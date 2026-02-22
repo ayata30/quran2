@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BACKEND_URL } from "../config";
 
 export default function Home() {
   const [audioURL, setAudioURL] = useState(null);
@@ -29,8 +30,10 @@ export default function Home() {
       const formData1 = new FormData();
       formData1.append("file", audioFile);
 
+
+
       const transcribeRes = await fetch(
-        "https://qurandetect-backend-975745335288.us-central1.run.app/transcribe",
+       `${BACKEND_URL}/transcribe`,
         {
           method: "POST",
           body: formData1,
@@ -44,7 +47,7 @@ export default function Home() {
       formData2.append("file", audioFile);
 
       const detectRes = await fetch(
-        "https://qurandetect-backend-975745335288.us-central1.run.app/detect",
+        `${BACKEND_URL}/detect`,
         {
           method: "POST",
           body: formData2,
@@ -52,6 +55,7 @@ export default function Home() {
       );
       {/* checking http status */}
 
+      
       if(!detectRes.ok){
         throw new Error("Backend request failed");
       }

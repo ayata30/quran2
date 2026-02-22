@@ -14,6 +14,7 @@ export default function Radio() {
   </p>
 
 <iframe
+  title="Quran Playlist"
   width="85%"
   height="420"
   scrolling="no"
