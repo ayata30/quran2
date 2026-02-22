@@ -54,16 +54,12 @@ export default function Home() {
         }
       );
 
-      {/* checking http status */}
-
-
-      const detectData = await detectRes.json();
-       if (detectData.error) {
+     const detectData = await detectRes.json();
+     
+       if (detectData.error) 
           setMatch(null);
-        } else {
-           setMatch(detectData);
-        }
-
+        else setMatch(detectData);
+        
  
     } catch (err) {
       console.error(err);
