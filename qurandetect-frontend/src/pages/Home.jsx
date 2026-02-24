@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { BACKEND_URL } from "../config";
+import { Link } from "react-router-dom";
+
 
 export default function Home() {
   const [audioURL, setAudioURL] = useState(null);
@@ -55,7 +57,7 @@ export default function Home() {
       );
 
      const detectData = await detectRes.json();
-     
+
        if (detectData.error) 
           setMatch(null);
         else setMatch(detectData);
@@ -77,7 +79,7 @@ export default function Home() {
           Detect Any Quran Recitation!
         </h1>
         <p className="text-md mb-4">
-          Upload audio and instantly find the Surah & Ayah
+          Upload audio and instantly find the matching Surah & Ayah!
         </p>
      
 
@@ -180,18 +182,20 @@ export default function Home() {
 
         {/* FEATURES */}
       <section className="mt-12">
-        <h2 className="mb-4 text-xl font-bold text-center">Features</h2>
-        <h3 className="text-center mb-4 text-gray-500">Coming Soon</h3>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-          <div className="rounded bg-teal-300 p-4 dark:bg-teal-700">
-            Hifdh Game
-          </div>
+        <h2 className="mb-3 text-xl font-bold text-center">Features</h2>
+        <h3 className="text-center mb-3 text-gray-500">Coming Soon</h3>
+        <div className="grid grid-cols-2 gap-5 sm:grid-cols-2 md:grid-cols-2">
+          <Link to="/radio">
           <div className="rounded bg-teal-300 p-4 dark:bg-teal-700">
             Radio
           </div>
-           
-          </div>
-          
+        </Link>
+        <Link to="/hifdhgame">
+          <div className="rounded bg-teal-300 p-4 dark:bg-teal-700">
+             Hifdh Game
+           </div>
+          </Link>
+          </div>       
       </section>
     </>
   );

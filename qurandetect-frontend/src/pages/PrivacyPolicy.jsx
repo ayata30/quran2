@@ -74,7 +74,7 @@ transcribe the recitation and identify the matching Surah and Ayah. </p>
         reflected on this page with a revised “Last updated” date.
       </p>
 
-      <h4 className="font-semibold mt-4">9. Contact</h4>
+      <h4 className="font-semibold mt-4 mb-3">9. Contact</h4>
 
       <p>
         If you have questions about this Privacy Policy, you may contact us

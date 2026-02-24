@@ -1,15 +1,14 @@
 export default function Radio() {
   return (
-    <div>
+    <div className="flex flex-col items-center justify-center text-center ">
       <h2 className="text-2xl font-bold">Quran Radio</h2>
       <p>Live recitations coming soon…</p>
-      <p>coming soon</p>
       <p>A loop of the Quran being recited by a Qari</p>
 
-  <p className="text-gray-400 max-w mt-4 mx-auto">
+  <p className="text-black-400 max-w mt-2 mx-auto">
     While the radio is being built, here’s a playlist
     of some of my favorite Quran recitations. </p>
-    <p className="text-gray-400 mb-4 max mx-auto">
+    <p className="text-black-400 mb-3 max mx-auto">
       Maybe you'll find one you like!
   </p>
 
@@ -25,7 +24,7 @@ export default function Radio() {
 
 ></iframe>
 
-<p className="text-xs  text-center text-gray-400 mt-4 max-w-md max-auto mb-4 ">
+<p className="text-xs  text-center text-gray-500 mt-4 max-w-md max-auto mb-4 ">
   This embedded audio player is provided by SoundCloud and may use cookies
    & collect usage data for analytics purposes. By using this player, you
   acknowledge that third-party services may collect data in accordance
