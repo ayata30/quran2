@@ -1,4 +1,4 @@
-
+import { Analytics } from "@vercel/analytics/react";
 import './App.css';
 import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from './pages/Home';
@@ -76,6 +76,7 @@ function App(){
         <p>©2025 QuranDetect. All rights reserved. Quran text provided by Tanzil.net</p>
       </footer>
     </div>
+    <Analytics/>
     </Router>
   );
 }
