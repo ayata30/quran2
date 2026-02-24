@@ -13,7 +13,7 @@ function App(){
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme") ;
-    if ( savedTheme == "dark" ){
+    if ( savedTheme === "dark" ){
        document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
@@ -72,7 +72,7 @@ function App(){
 
 
       {/* FOOTER */}
-      <footer className="bg-teal-500 text-center text-sm text-teal-100 py-1 max-auto dark:bg-teal-700 dark:text-black">
+      <footer className="w-full bg-teal-500 text-center text-sm text-teal-100 py-2 mx-auto mt-auto dark:bg-teal-700 dark:text-black">
         <p>©2025 QuranDetect. All rights reserved. Quran text provided by Tanzil.net</p>
       </footer>
     </div>

@@ -29,16 +29,13 @@ transcribe the recitation and identify the matching Surah and Ayah. </p>
         <li>Device identifiers</li>
         <li>Browsing history</li>
       </ul>
-      <p>
-        Audio files and transcriptions are processed temporarily and are not stored permanently.
-      </p>
 
       <h4 className="font-semibold mt-4">4. Data Storage and Retention</h4>
 
       <ul className="list-disc ml-6 space-y-1">
         <li>Audio files are processed in memory or temporary storage</li>
         <li>No audio recordings or transcriptions are retained after processing</li>
-        <li>No user data is stored for tracking or analytics purposes</li>
+
       </ul>
 
       <h4 className="font-semibold mt-4">5. Third-Party Services</h4>
@@ -74,10 +71,16 @@ transcribe the recitation and identify the matching Surah and Ayah. </p>
         reflected on this page with a revised “Last updated” date.
       </p>
 
-      <h4 className="font-semibold mt-4 mb-3">9. Contact</h4>
+      <h4 className="font-semibold mt-4">9. Contact</h4>
       <p>If you have questions about this Privacy Policy, you may contact us
-        through the project repository or application page.
+        through the project repository or contact page.
       </ p> 
-        </div>
+        
+
+      <h4 className="font-semibold mt-4">10. Analytics</h4>
+        <p>We use Vercel Analytics to collect anonymous usage data such as page views and general traffic information.
+           This data helps improve the functionality and performance of the website.
+            No personal information is collected or sold.</p>
+            </div>
     );
 }

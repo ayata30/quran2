@@ -126,13 +126,15 @@ export default function Home() {
     <ul>.ogg</ul>
   </ul>
 
-  <p className="mt-2 text-xs text-black-800">
-       Tip: For best results, upload a single ayah or three with clear recitation and minimal background noise. <p/> 
-    <p> Max length: 60 seconds </p>
-    <p className="mt-4 text-xs text-grey-400 text-center ">
-  Note: For longer recitations, QuranDetect may return the closest matching ayah rather than the full passage.
+  <p className="mt-2 text-xs text-black-800 text-center">
+       <strong>Tip:</strong> For best results, upload a single ayah or three with clear recitation and minimal background noise.
 </p>
-    </p>
+    <p className="mt-2 text-xs text-grey-400 text-center ">
+      <strong>Note:</strong> For longer recitations, QuranDetect may return the closest matching ayah rather than the full passage.
+</p>
+  <p className="text-sm mt-2"> 
+    <span className=" font-semibold">Max length:</span> 60 seconds</p>
+
 </div>
 
      
