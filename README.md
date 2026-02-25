@@ -5,7 +5,8 @@
 ## Description
 QuranDetect is a Shazam-inspired web application that identifies Quran Ayahs from user audio recordings. The user is able to upload their audio and immeditaely get a text repsonse back of the corrcelty located Ayah.  
  
-<img width="2524" height="1343" alt="Screenshot 2026-02-11 154949" src="https://github.com/user-attachments/assets/020e7af8-d78a-49dc-8a38-83aee506ba3c" />
+<img width="2533" height="1367" alt="Screenshot 2026-02-24 203056" src="https://github.com/user-attachments/assets/963372c8-661d-403e-b243-7202a1661884" />
+
 
 ## 🚀 Features
 
