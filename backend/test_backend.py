@@ -8,5 +8,5 @@ with open("sample.wav", "rb") as f:
     print(res.status_code)
     print(res.text)  # raw response
 
-# Replace with the path to your sample audio file
+
 

@@ -19,11 +19,6 @@ with open(QURAN_PATH, "r", encoding="utf-8") as f:
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-<<<<<<< HEAD
-   allow_credentials=True,
-=======
-    allow_credentials=True,
->>>>>>> c16d17795ab63ee09e946ddd8b6ac98a95a1fd18
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -39,14 +34,6 @@ async def transcribe(file: UploadFile = File(...)):
     audio_bytes = await file.read()
     transcript = transcribe_audio(audio_bytes)
     return {"text": transcript}
-
-
-<<<<<<< HEAD
-
-class TextInput(BaseModel):
-    text: str
-=======
->>>>>>> c16d17795ab63ee09e946ddd8b6ac98a95a1fd18
 
 class TextInput(BaseModel):
     text: str
@@ -71,41 +58,5 @@ async def detect(file: UploadFile = File(...)):
 
     except Exception as e:
         logging.error(f"Error processing file {file.filename}: {e}", exc_info=True)
-<<<<<<< HEAD
-        raise HTTPException(status_code=500, detail=str(e))   
 
-        
-=======
         raise HTTPException(status_code=500, detail=str(e))    
-'''
-@app.post("/detect")
-async def detect(file: UploadFile = File(...)):
-    logging.info(f"Received file: {file.filename}")
-    try:
-        audio_bytes = await file.read()
-        logging.info(f"Read {len(audio_bytes)} bytes from audio")
-        
-        # Transcribe
-        transcription = transcribe_audio(audio_bytes)
-        logging.info(f"Transcription: {transcription}")
-        
-        #input = TextInput(text=transcribe_audio(audio_bytes))
-        matched = match_verse(input.text, quran_db)
-        logging.info(f"Matched: {matched}")
-        
-        if matched:
-            return matched
-        return {"error": "No match"}
-    
-    except Exception as e:
-        logging.error(f"Error processing file {file.filename}: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
-'''
-
-
-PORT = int(os.environ.get("PORT", 8080))
-
-
-
-    
->>>>>>> c16d17795ab63ee09e946ddd8b6ac98a95a1fd18
